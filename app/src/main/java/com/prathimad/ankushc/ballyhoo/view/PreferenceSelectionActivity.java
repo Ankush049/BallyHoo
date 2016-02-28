@@ -19,6 +19,7 @@ import com.prathimad.ankushc.ballyhoo.model.Preference;
 import com.prathimad.ankushc.ballyhoo.model.Promotion;
 import com.prathimad.ankushc.ballyhoo.view.adapter.PromotionClickListener;
 import com.prathimad.ankushc.ballyhoo.view.adapter.PromotionsRecyclerViewAdapter;
+import com.prathimad.ankushc.ballyhoo.view.adapter.SwipeableRecyclerViewTouchListener;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class PreferenceSelectionActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
-    private PromotionsRecyclerViewAdapter viewAdapter;
+    private PromotionsRecyclerViewAdapter mViewAdapter;
     private List<Promotion> mPromotions;
 
     @Override
@@ -36,7 +37,7 @@ public class PreferenceSelectionActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.promotion_recycler_view);
+        /*mRecyclerView = (RecyclerView) findViewById(R.id.promotion_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setVerticalScrollBarEnabled(true);
 
@@ -45,8 +46,8 @@ public class PreferenceSelectionActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
         mPromotions = new Promotion().getPromotions();
-        viewAdapter = new PromotionsRecyclerViewAdapter(mPromotions);
-        mRecyclerView.setAdapter(viewAdapter);
+        mViewAdapter = new PromotionsRecyclerViewAdapter(mPromotions);
+        mRecyclerView.setAdapter(mViewAdapter);
 
         mRecyclerView.addOnItemTouchListener(
                 new PromotionClickListener(this, new PromotionClickListener.OnItemClickListener() {
@@ -57,6 +58,35 @@ public class PreferenceSelectionActivity extends AppCompatActivity {
                     }
                 })
         );
+
+
+        SwipeableRecyclerViewTouchListener swipeTouchListener =
+                new SwipeableRecyclerViewTouchListener(mRecyclerView, new SwipeableRecyclerViewTouchListener.SwipeListener() {
+                            @Override
+                            public boolean canSwipeLeft(int position) {
+                                return true;
+                            }
+
+                    @Override
+                    public boolean canSwipeRight(int position) {
+                        return false;
+                    }
+
+                    @Override
+                            public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    mPromotions.remove(position);
+                                    mViewAdapter.notifyItemRemoved(position);
+                                }
+                                mViewAdapter.notifyDataSetChanged();
+                            }
+
+                    @Override
+                    public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
+
+                    }
+                });
+        mRecyclerView.addOnItemTouchListener(swipeTouchListener); */
     }
 
 }

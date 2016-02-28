@@ -15,13 +15,13 @@ import android.view.MenuItem;
 
 import com.prathimad.ankushc.ballyhoo.R;
 
-public class ProfileNaviagtionActivity extends AppCompatActivity
+public class MenuNavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_naviagtion);
+        setContentView(R.layout.preference_selection_naviagtion);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

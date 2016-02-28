@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".navigation.ProfileNaviagtionActivity"
+            android:name=".navigation.MenuNavigationActivity"
             android:label="@string/title_activity_profile_naviagtion"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
