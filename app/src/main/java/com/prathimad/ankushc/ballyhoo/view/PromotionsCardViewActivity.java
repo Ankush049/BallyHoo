@@ -37,7 +37,7 @@ public class PromotionsCardViewActivity extends MenuNavigationActivity implement
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.promotions_card_list_view);
+        setContentView(R.layout.promotion_filter_naviagtion);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
